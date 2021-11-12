@@ -22,15 +22,6 @@ class Arbol:
             return True
         return False
 
-    def insertarPregunta(self, nodoActual, dato):
-        newNodo = Nodo(dato)
-        nodoActual._derecha = newNodo
-        return newNodo
-
-    def insertarPersonaje(self, nodoActual, dato):
-        newNodo = Nodo(dato)
-        nodoActual._izquierda = newNodo
-
     def insertar(self, dato):
 
         padre = None

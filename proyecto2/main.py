@@ -1,17 +1,20 @@
 from arbol import Arbol
+from nodo import Nodo
 
-def perder(aquinator, nodoActual):
+def perder(nodoActual):
+    datoActual = nodoActual.dato()
     print("nO PuEde se, He perdio chavale!!!!!!!!!!")
-    datoPadre = input("Digite la caracteristica de su personaje: ")
-    nodoPadre = aquinator.insertarPregunta(nodoActual, datoPadre)
-    datoHijo = input("Digite su personaje caracteristico: ")
-    aquinator.insertarPersonaje(nodoPadre, datoHijo)
+    datoHijo = input("Que personaje era?: ")
+    datoPadre = input("Cual caracteristica diferencia a su personaje?: ")
+    nodoActual._dato = datoPadre
+    nodoActual._izquierda = Nodo(datoHijo)
+    nodoActual._derecha = Nodo(datoActual)
 
 def jugar(aquinator, opcion=None, nodoActual=None):
 
     nodo = aquinator.obtener(opcion, nodoActual)
     if nodo is False:
-        perder(aquinator, nodoActual)
+        perder(nodoActual)
     elif nodo is True:
         print("He ganao chavale")
     else:
@@ -23,6 +26,8 @@ def main():
     aquinator = Arbol()
     # cargar
     aquinator.insertar("deportista")
+    aquinator.insertar("Keylor Navas")
+    aquinator.insertar("Keylor Navassssss")
     print("----------------AQUINATOR-----------------")
     while seguir:
         jugar(aquinator)
