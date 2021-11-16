@@ -2,8 +2,8 @@ class Nodo:
 
     def __init__(self, dato=None, izq=None, der=None):
         self._dato = dato
-        self._izquierda = izq
-        self._derecha = der
+        self._izquierda = izq  #si
+        self._derecha = der  #no
 
     def izquierda(self):
         return self._izquierda

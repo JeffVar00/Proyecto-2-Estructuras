@@ -2,49 +2,28 @@ from nodo import Nodo
 
 class Arbol:
 
-    def __init__(self, raiz=None, actual=None):
+    def __init__(self, listaPreguntas, raiz=None, actual=None):
         self._raiz = raiz
         self._actual = actual
-        self._contador = 0
-        self._altura = 0
-        self._tamanno = 0
+        self._raiz = self.insertarNodos(listaPreguntas)
 
-    def recorrer(self):
-        pass
+    def insertarNodos(self, listaPreguntas):
 
-    def Vacio(self, nodo):
-        if nodo is None:
-            return True
-        return False
+        if len(listaPreguntas) != 0:
 
-    def EsHoja(self, nodo):
-        if nodo.izquierda() is None and nodo.derecha() is None:
-            return True
-        return False
+            aux = listaPreguntas.pop()
 
-    def insertar(self, dato):
+            nodoA = Nodo(aux)
 
-        padre = None
-        self._actual = self._raiz
+            if aux[0] == 'P':
+                nodoA._izquierda = self.insertarNodos(listaPreguntas)
+                nodoA._derecha = self.insertarNodos(listaPreguntas)
 
-        while self.Vacio(self._actual) is not True and dato != self._actual.dato():
-            padre = self._actual
-            if dato > self._actual.dato():
-                self._actual = self._actual.derecha()
-            elif dato < self._actual.dato():
-                self._actual = self._actual.izquierda()
+            return nodoA
 
-        if self.Vacio(self._actual) is not True:
-            return
-        if self.Vacio(padre) is True:
-            self._raiz = Nodo(dato)
-            self._tamanno += 1
-        elif dato < padre.dato():
-            padre._izquierda = Nodo(dato)
-            self._tamanno += 1
-        elif dato > padre.dato():
-            padre._derecha = Nodo(dato)
-            self._tamanno += 1
+        else:
+
+            return None
 
     def obtener(self, respuesta=None, nodoActual=None):
 
@@ -52,16 +31,18 @@ class Arbol:
             nodoActual = self._raiz
             return nodoActual
 
-        if respuesta == "S":
+        if respuesta == "S" or respuesta == "s":
             if nodoActual.izquierda() is None:
                 return True
             else:
                 return nodoActual.izquierda()
-        elif respuesta == "N":
+        elif respuesta == "N" or respuesta == "n":
             if nodoActual.derecha() is None:
                 return False
             else:
                 return nodoActual.derecha()
+
+        return "none"
 
 
 
