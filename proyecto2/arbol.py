@@ -69,9 +69,11 @@ class Arbol:
 
     def guardarArbol(self, lista, nodo):
         if nodo.izquierda():
-            lista.append('P' + nodo.dato() + "\n")
+            # lista.append('P' + nodo.dato() + "\n")
+            lista.append(nodo.dato() + "\n")
             self.guardarArbol(lista, nodo.izquierda())
             self.guardarArbol(lista, nodo.derecha())
         else:
-            lista.append('R' + nodo.dato() + "\n")
+            # lista.append('R' + nodo.dato() + "\n")
+            lista.append(nodo.dato() + "\n")
 

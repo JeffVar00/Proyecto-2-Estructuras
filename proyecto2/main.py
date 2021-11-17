@@ -1,15 +1,21 @@
 from arbol import Arbol
 from nodo import Nodo
 
-# EDITAR, SE PIERDE EL NODO ACTUAL
 def perder(nodoActual):
     datoActual = nodoActual.dato()
     print("Buena esa, CracK")
-    datoHijo = input("Que personaje era?: ")
-    datoPadre = input("Digite una frase que diferencia a su personaje: ")
-    nodoActual._dato = 'P' + datoPadre
-    nodoActual._izquierda = Nodo('R' + datoHijo)
-    nodoActual._derecha = Nodo('R' + datoActual)
+    if datoActual[0] == 'P':
+        datoHijo = input("Que personaje era?: ")
+        datoPadre = input("Digite una frase que diferencia a su personaje: ")
+        nodoActual._derecha = Nodo('P' + datoPadre)
+        nodoActual.derecha()._izquierda = Nodo('R' + datoHijo)
+        nodoActual.derecha()._derecha = Nodo('R' + "None")
+    else:
+        datoHijo = input("Que personaje era?: ")
+        datoPadre = input("Digite una frase que diferencia a su personaje: ")
+        nodoActual._dato = 'P' + datoPadre
+        nodoActual._izquierda = Nodo('R' + datoHijo)
+        nodoActual._derecha = Nodo('R' + datoActual)
 
 
 def jugar(aquinator, opcion=None, nodoActual=None):
@@ -49,8 +55,8 @@ def main():
 
     # COSAS QUE HACEN FALTA:
     # VALIDAR QUE SOLO SE INGRESE S Y N Y REITERAR QUE SOLO ESOS DIGITOS SON VALIDOS
-    # AL MOSTRAR LA RESPUESTA SE MUESTRA EL P O R, VER COMO IGNORARLO O AL INGRESAR IGNORAR EL PRIMER DIGITO
-    # EDITAR EL PERDER YA QUE EL NODO ACTUAL SE PIERDE
+    # AL MOSTRAR LA RESPUESTA SE MUESTRA EL P O R, VER COMO IGNORARLO O AL INGRESAR IGNORAR EL PRIMER DIGITO,
+    # ESTETICA NO ES OBLIGATORIO
 
 
 if __name__ == '__main__':
