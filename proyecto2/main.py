@@ -25,8 +25,11 @@ def jugar(aquinator, opcion=None, nodoActual=None):
 
 def main():
     seguir = True
+    preguntasyrespuestas = []
+    with open('preguntasyrespuestas.txt', 'r') as fichero:
+        for linea in fichero:
+            preguntasyrespuestas.append(linea.rstrip())
 
-    preguntasyrespuestas = ["PDeportista", "RKeylor Navas", "PConductor", "RBrayan Ruiz", "PMusico", "RZeta"]
     preguntasyrespuestas.reverse()
 
     aquinator = Arbol(preguntasyrespuestas)
