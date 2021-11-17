@@ -1,5 +1,6 @@
 from nodo import Nodo
 
+
 class Arbol:
 
     def __init__(self, listaPreguntas, raiz=None, actual=None):
@@ -7,11 +8,17 @@ class Arbol:
         self._actual = actual
         self._raiz = self.insertarNodos(listaPreguntas)
 
+    def raiz(self):
+        return self._raiz
+
     def insertarNodos(self, listaPreguntas):
 
         if len(listaPreguntas) != 0:
 
             aux = listaPreguntas.pop()
+
+            if aux == "":
+                return None
 
             nodoA = Nodo(aux)
 
@@ -44,5 +51,30 @@ class Arbol:
 
         return "none"
 
+    def verArbol(self):
+        self.verSubArbol(self._raiz)
 
+    def verSubArbol(self, nodo):
+        print("\n" + nodo.dato())
+        if nodo.izquierda():
+            print("S ")
+            self.verSubArbol(nodo.izquierda())
+        if nodo.derecha():
+            print("N ")
+            self.verSubArbol(nodo.derecha())
+
+    def guardar(self):
+        fichero = open('preguntasyrespuestas.txt', 'w')
+        linea = []
+        self.guardarArbol(linea, self._raiz)
+        fichero.writelines(linea)
+        fichero.close()
+
+    def guardarArbol(self, lista, nodo):
+        if nodo.izquierda():
+            lista.append('P' + nodo.dato() + "\n")
+            self.guardarArbol(lista, nodo.izquierda())
+            self.guardarArbol(lista, nodo.derecha())
+        else:
+            lista.append('R' + nodo.dato() + "\n")
 
