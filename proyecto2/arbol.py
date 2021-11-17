@@ -8,9 +8,6 @@ class Arbol:
         self._actual = actual
         self._raiz = self.insertarNodos(listaPreguntas)
 
-    def raiz(self):
-        return self._raiz
-
     def insertarNodos(self, listaPreguntas):
 
         if len(listaPreguntas) != 0:
