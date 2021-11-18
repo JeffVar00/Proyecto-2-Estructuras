@@ -1,13 +1,15 @@
-PPortero
-PJuega en el PSG
+Pdeportista
+Pjuega en el Paris Saint Germain
 RKeylor Navas
-PFutbolista
-Pjuega en la liga deportiva alajuelense
+Pfutbolista
+Pjuega en la Liga Deportiva Alajuelense
 RBrayan Ruiz
+Pjuega en Monterrey
+RJoel Campbell
 RNone
 RNone
-PMusico
-PCantante
-RZeta
+Pmusico
+Pcantante
+RVanessa Gonzales
 RNone
 RNone

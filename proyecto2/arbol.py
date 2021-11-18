@@ -48,6 +48,23 @@ class Arbol:
 
         return "none"
 
+    def guardar(self):
+        fichero = open('preguntasyrespuestas.txt', 'w')
+        linea = []
+        self.guardarArbol(linea, self._raiz)
+        fichero.writelines(linea)
+        fichero.close()
+
+    def guardarArbol(self, lista, nodo):
+        if nodo.izquierda():
+            lista.append(nodo.dato() + "\n")
+            self.guardarArbol(lista, nodo.izquierda())
+            self.guardarArbol(lista, nodo.derecha())
+        else:
+            lista.append(nodo.dato() + "\n")
+
+
+"""
     def verArbol(self):
         self.verSubArbol(self._raiz)
 
@@ -59,21 +76,4 @@ class Arbol:
         if nodo.derecha():
             print("N ")
             self.verSubArbol(nodo.derecha())
-
-    def guardar(self):
-        fichero = open('preguntasyrespuestas.txt', 'w')
-        linea = []
-        self.guardarArbol(linea, self._raiz)
-        fichero.writelines(linea)
-        fichero.close()
-
-    def guardarArbol(self, lista, nodo):
-        if nodo.izquierda():
-            # lista.append('P' + nodo.dato() + "\n")
-            lista.append(nodo.dato() + "\n")
-            self.guardarArbol(lista, nodo.izquierda())
-            self.guardarArbol(lista, nodo.derecha())
-        else:
-            # lista.append('R' + nodo.dato() + "\n")
-            lista.append(nodo.dato() + "\n")
-
+"""

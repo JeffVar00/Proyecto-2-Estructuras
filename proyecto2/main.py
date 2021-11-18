@@ -1,6 +1,8 @@
 from arbol import Arbol
 from nodo import Nodo
 
+#  METODO GUARDAR E INSERTAR INFLUENCIADOS POR ESTE CODIGO https://ideone.com/FEYIfO
+
 def perder(nodoActual):
     datoActual = nodoActual.dato()
     print("Buena esa, CracK")
@@ -19,6 +21,7 @@ def perder(nodoActual):
 
 
 def jugar(aquinator, opcion=None, nodoActual=None):
+    seguir = False
     nodo = aquinator.obtener(opcion, nodoActual)
     if nodo is False:
         perder(nodoActual)
@@ -27,7 +30,13 @@ def jugar(aquinator, opcion=None, nodoActual=None):
     elif nodo.dato() == "RNone":
         perder(nodoActual)
     else:
-        opcion = input("¿Su personaje es " + nodo.dato() + "?" + " Acerte? S/N: ")  # falta validar que solo sea S o N
+        while seguir is False:
+            opcion = input("¿Su personaje es " + nodo.dato()[1:len(nodo.dato())] + "?" + " Acerte? S/N: ")
+            opcion = opcion.upper()
+            if opcion in ["S", "N"]:
+                seguir = True
+            else:
+                print("Caracteres validos: S o N")
         jugar(aquinator, opcion, nodo)
 
 
@@ -41,8 +50,6 @@ def main():
     preguntasyrespuestas.reverse()
 
     aquinator = Arbol(preguntasyrespuestas)
-    # MUESTRA EL ARBOL
-    # aquinator.verArbol()
 
     print("----------------AQUINATOR-----------------")
     while seguir:
@@ -52,11 +59,6 @@ def main():
             seguir = False
 
     aquinator.guardar()
-
-    # COSAS QUE HACEN FALTA:
-    # VALIDAR QUE SOLO SE INGRESE S Y N Y REITERAR QUE SOLO ESOS DIGITOS SON VALIDOS
-    # AL MOSTRAR LA RESPUESTA SE MUESTRA EL P O R, VER COMO IGNORARLO O AL INGRESAR IGNORAR EL PRIMER DIGITO,
-    # ESTETICA NO ES OBLIGATORIO
 
 
 if __name__ == '__main__':
